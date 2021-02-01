@@ -53,10 +53,10 @@ resource "azurerm_stream_analytics_output_eventhub" "ldoutput" {
   servicebus_namespace      = "${var.azenv}-sap-evth2"
   shared_access_policy_key  = var.eh_duplexpolicykey
   shared_access_policy_name = "DuplexPolicy"
-  
+
   serialization {
     type     = "Json"
     encoding = "UTF8"
-	format = "Array"
+    format   = "Array"
   }
 }

@@ -93,12 +93,12 @@ resource "azurerm_stream_analytics_stream_input_eventhub" "ldinput1" {
 }
 
 resource "azurerm_stream_analytics_stream_input_blob" "ldinput2" {
-  name                      = var.stgacccontainername 
+  name                      = var.stgacccontainername
   stream_analytics_job_name = azurerm_stream_analytics_job.main.name
   resource_group_name       = var.resource_group_name
-  storage_account_name      = var.stgaccnamestraminput 
-  storage_account_key       = var.stgaccnamestraminputacckey 
-  storage_container_name    = var.stgacccontainername 
+  storage_account_name      = var.stgaccnamestraminput
+  storage_account_key       = var.stgaccnamestraminputacckey
+  storage_container_name    = var.stgacccontainername
   path_pattern              = "{date}"
   date_format               = "yyyy/MM/dd"
   time_format               = "HH"

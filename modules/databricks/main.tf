@@ -44,5 +44,5 @@ resource "azurerm_template_deployment" "main" {
     ]
 }
 DEPLOY
-	deployment_mode = "Incremental"
+  deployment_mode = "Incremental"
 }

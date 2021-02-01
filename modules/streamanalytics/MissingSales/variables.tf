@@ -17,17 +17,17 @@ variable "sb_primarykey" {
 }
 
 variable "stgaccnamestraminput" {
-	description = "Storage account name for input to MissingSales streamanalytics"
+  description = "Storage account name for input to MissingSales streamanalytics"
 }
 
 variable "stgaccnamestraminputacckey" {
-	description = "Access key of streamanalytics"
+  description = "Access key of streamanalytics"
 }
 
 variable "stgacccontainername" {
-	description = "Storage account container name"
+  description = "Storage account container name"
 }
 variable "eh_listenaccesskey" {
-	description = "EventHub listen access key"
+  description = "EventHub listen access key"
 }
 

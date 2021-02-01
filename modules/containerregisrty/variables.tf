@@ -1,3 +1,7 @@
+variable "containerregistry_sku" {
+  description = "Container Registry SKU"
+}
+
 variable "resource_group_name" {
   description = "variable of the resource group"
 }
@@ -5,11 +9,4 @@ variable "resource_group_name" {
 variable "location" {
   description = "location of the resource group"
 }
-
-variable "azenv" {
-  type = string
-}
-
-variable "eh_duplexpolicykey" {
-  description = "Eventhub duplex policy key"
-}
+variable "azenv" {}

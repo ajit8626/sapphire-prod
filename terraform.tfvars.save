@@ -57,11 +57,6 @@ eventhubs1_7D = ["salestransactions", "tankinventories"]
 eventhubs2 = ["buffered-real-time-rec-req", "interval-snapshots", "notifications", "real-time-rec-req", "realtime-stock-rec-snapshots"]
 
 #ServiceBus
-sbqpartition3Dttl = ["feed-file-receipts", "inventorycontrolreportrequests", "notifications", "pbireportsqueue", "regeneraterecrequest", "sapphireadapterfilesqueue", "sirrequests", "tankchartrequests"]
-sbtopic = ["alerts", "confirmeddeliveries", "dailytaskalerts", "dailytasks", "tankinventories"]
-alertsubscription = ["atgalerts", "continuousrecalerts", "dailyalerts", "dailytaskalerts", "datasubmissionalerts", "siralerts", "smartalerts"]
-confimeddelieveriessubscription = ["factor", "pdi", "pdiconverter", "pdisubscription"]
-dailytaskalertssubscription = ["all"]
-dailytaskssubscription = ["drainback", "linevariance", "rollup", "tankleak"]
-tankinventoriessubscription = ["realtimealerts", "smartalerts"]
 servicebussku = "Standard"
+sbqpartition3Dttl = ["feed-file-receipts", "inventorycontrolreportrequests", "notifications", "pbireportsqueue", "regeneraterecrequest", "sapphireadapterfilesqueue", "sirrequests", "tankchartrequests"]
+
