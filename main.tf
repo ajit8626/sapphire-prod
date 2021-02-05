@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "main" {
     environment = var.azenv
   }
 }
-/*
+
 module "signalr" {
   source              = "./modules/signalr"
   resource_group_name = azurerm_resource_group.main.name
@@ -132,19 +132,46 @@ module "eventhub" {
   eventhubnssku = var.eventhubnssku
   eventhubnscapacity = var.eventhubnscapacity
 }
-*/
+
 
 module "servicebus" {
-  source = "./modules/servicebus"
+  source                          = "./modules/servicebus"
+  azenv                           = var.azenv
+  resource_group_name             = azurerm_resource_group.main.name
+  location                        = azurerm_resource_group.main.location
+  sbqpartition3Dttl               = var.sbqpartition3Dttl
+  sbtopic                         = var.sbtopic
+  alertsubscription               = var.alertsubscription
+  confimeddelieveriessubscription = var.confimeddelieveriessubscription
+  dailytaskalertssubscription     = var.dailytaskalertssubscription
+  dailytaskssubscription          = var.dailytaskssubscription
+  tankinventoriessubscription     = var.tankinventoriessubscription
+  servicebussku                   = var.servicebussku
+}
+
+
+module "iothub" {
+  source = "./modules/iothub"
+  resource_group_name = azurerm_resource_group.main.name
+  location = azurerm_resource_group.main.location
+  azenv = var.azenv
+  azure_subscription_id = var.azure_subscription_id
+  evth1ns = module.eventhub.evth1ns
+  iothsku = var.iothsku
+  iothcapacity = var.iothcapacity
+}
+
+module "aks" {
+  source = "./modules/aks"
   azenv = var.azenv
   resource_group_name = azurerm_resource_group.main.name
   location = azurerm_resource_group.main.location
-  sbqpartition3Dttl = var.sbqpartition3Dttl
-  sbtopic = var.sbtopic 
-  alertsubscription = var.alertsubscription
-  confimeddelieveriessubscription = var.confimeddelieveriessubscription 
-  dailytaskalertssubscription = var.dailytaskalertssubscription
-  dailytaskssubscription = var.dailytaskssubscription 
-  tankinventoriessubscription = var.tankinventoriessubscription
-  servicebussku = var.servicebussku
+  aks_admin_username = var.aks_admin_username
+  agents_size = var.agents_size
+  agents_count = var.agents_count
+  kubernetes_version = var.kubernetes_version
+  azure_client_id = var.azure_client_id
+  azure_client_secret = var.azure_client_secret
+  nodepoolsname = var.nodepoolsname
+  nodepoolvm_size = var.nodepoolvm_size
 }

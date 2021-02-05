@@ -11,41 +11,41 @@ variable "azenv" {
 }
 variable "servicebussku" {
   description = "SB tier"
-  type = string
+  type        = string
 }
 
 variable "confimeddelieveriessubscription" {
   description = "SB Topics subscription list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "dailytaskalertssubscription" {
   description = "SB Topics subscription list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "dailytaskssubscription" {
   description = "SB Topics subscription list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "tankinventoriessubscription" {
   description = "SB Topics subscription list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "sbqpartition3Dttl" {
   description = "SB Queues 3D time to live list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "sbtopic" {
   description = "SB topics list"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "alertsubscription" {
   description = "SB Topics subscription list"
-  type = list(string)
+  type        = list(string)
 }
 

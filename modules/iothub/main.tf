@@ -16,6 +16,7 @@ resource "azurerm_iothub_shared_access_policy" "iothubowner" {
   resource_group_name =  var.resource_group_name
   iothub_name         = azurerm_iothub.main.name
 
+  registry_read = true
   registry_write = true
   service_connect = true
   device_connect = true
@@ -51,22 +52,23 @@ resource "azurerm_iothub_shared_access_policy" "registryReadWrite" {
   iothub_name         = azurerm_iothub.main.name
 
   registry_write = true
+  registry_read = true
 }
 
 resource "azurerm_template_deployment" "main" {
-  name = azurerm_iothub.main.name"/Microsoft.EventGrid/"${var.eventsubscriptionname}
+  name = "iothub-deployment"
   resource_group_name = var.resource_group_name
   parameters = {
     resourceGrp = var.resource_group_name
-    subscriptd = var.subscription_id
+    subscriptd = var.azure_subscription_id
     iotHubName = azurerm_iothub.main.name
-    eventHubNameSpace = var.eventhubnamespace
-    eventHubName = var.eventhubname
-    eventSubscriptionName = var.eventsubscriptionname
-    filterMessageType = var.filtermessagetype
+    eventHubNameSpace = var.evth1ns
+    eventHubName = "tankinventories"
+    eventSubscriptionName = "tankinventories"
+    filterMessageType = "atg-tank-inventory"
   }
-  template_body = <<Deploy
- {
+  template_body = <<DEPLOY
+{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -124,13 +126,11 @@ resource "azurerm_template_deployment" "main" {
       "name": "[concat(parameters('iotHubName'),'/Microsoft.EventGrid/',parameters('eventSubscriptionName'))]",
       "apiVersion": "2018-01-01",
       "properties": {
-        "topic": 
-"[concat('/subscriptions/',parameters('subscriptd'),'/resourcegroups/',parameters('resourceGrp'),'/providers/Microsoft.Devices/IotHubs/',parameters('iotHubName'))]",
+        "topic": "[concat('/subscriptions/',parameters('subscriptd'),'/resourcegroups/',parameters('resourceGrp'),'/providers/Microsoft.Devices/IotHubs/',parameters('iotHubName'))]",
         "destination": {
           "endpointType": "EventHub",
           "properties": {
-            "resourceId": 
-"[concat('/subscriptions/',parameters('subscriptd'),'/resourcegroups/',parameters('resourceGrp'),'/providers/Microsoft.EventHub/namespaces/',parameters('eventHubNameSpace'),'/eventhubs/',parameters('eventHubName'))]"
+            "resourceId": "[concat('/subscriptions/',parameters('subscriptd'),'/resourcegroups/',parameters('resourceGrp'),'/providers/Microsoft.EventHub/namespaces/',parameters('eventHubNameSpace'),'/eventhubs/',parameters('eventHubName'))]"
           }
         },
         "filter": {
@@ -160,5 +160,5 @@ resource "azurerm_template_deployment" "main" {
   ]
 }
 DEPLOY
-  deployment_mode = "Incremental"
+ deployment_mode = "Incremental"
 }
