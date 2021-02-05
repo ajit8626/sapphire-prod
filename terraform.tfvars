@@ -1,7 +1,4 @@
-azure_subscription_id = "5b8eff2b-9710-4a04-9c70-f8d43b6b5e10"
-azure_client_id       = "0fa21970-504f-4204-a082-8c77e20d28b5"
-azure_tenant_id       = "3d2d2b6f-061a-48b6-b4b3-9312d687e3a1"
-azure_client_secret   = "5tUM1fi-Ru5VpPGj0E_70OUlwoL2LqE0-~"
+
 
 azenv    = "aj"
 location = "westeurope"
