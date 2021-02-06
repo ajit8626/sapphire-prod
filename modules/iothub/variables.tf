@@ -7,15 +7,15 @@ variable "location" {
 variable "azenv" {
   type = string
 }
-variable "azure_subscription_id" {} 
-variable "evth1ns" {} 
+variable "azure_subscription_id" {}
+variable "evth1ns" {}
 
 variable "iothsku" {
   description = "IOT HUB sku"
-  default = "S1"
+  default     = "S1"
 }
 
 variable "iothcapacity" {
   description = "IOT HUB capacity"
-  default = "1"
+  default     = "1"
 }

@@ -115,13 +115,26 @@ resource "azurerm_servicebus_subscription" "confimeddelieveries-subsc" {
   depends_on         = [azurerm_servicebus_topic.sbtopics]
 }
 
+
+resource "azurerm_servicebus_subscription" "dailyreconciliations-subsc" {
+  count               = length(var.dailyreconciliationssubscription)
+  name                = var.dailyreconciliationssubscription[count.index]
+  resource_group_name = var.resource_group_name
+  namespace_name      = azurerm_servicebus_namespace.main.name
+  #dailyreconciliations
+  topic_name         = var.sbtopic[2]
+  max_delivery_count = 10
+  depends_on         = [azurerm_servicebus_topic.sbtopics]
+}
+
+
 resource "azurerm_servicebus_subscription" "dailytaskalerts-subsc" {
   count               = length(var.dailytaskalertssubscription)
   name                = var.dailytaskalertssubscription[count.index]
   resource_group_name = var.resource_group_name
   namespace_name      = azurerm_servicebus_namespace.main.name
   #dailytaskalerts
-  topic_name         = var.sbtopic[2]
+  topic_name         = var.sbtopic[3]
   max_delivery_count = 10
   depends_on         = [azurerm_servicebus_topic.sbtopics]
 }
@@ -132,10 +145,21 @@ resource "azurerm_servicebus_subscription" "dailytasks-subsc" {
   resource_group_name = var.resource_group_name
   namespace_name      = azurerm_servicebus_namespace.main.name
   #dailytasks
-  topic_name         = var.sbtopic[3]
+  topic_name         = var.sbtopic[4]
   max_delivery_count = 10
   depends_on         = [azurerm_servicebus_topic.sbtopics]
 }
+resource "azurerm_servicebus_subscription" "notifications-subsc" {
+  count               = length(var.notificationssubscription)
+  name                = var.notificationssubscription[count.index]
+  resource_group_name = var.resource_group_name
+  namespace_name      = azurerm_servicebus_namespace.main.name
+  #notifications
+  topic_name         = var.sbtopic[5]
+  max_delivery_count = 3
+  depends_on         = [azurerm_servicebus_topic.sbtopics]
+}
+
 
 resource "azurerm_servicebus_subscription" "tankinventories-subsc" {
   count               = length(var.tankinventoriessubscription)
@@ -143,7 +167,7 @@ resource "azurerm_servicebus_subscription" "tankinventories-subsc" {
   resource_group_name = var.resource_group_name
   namespace_name      = azurerm_servicebus_namespace.main.name
   #tankinventories
-  topic_name         = var.sbtopic[4]
+  topic_name         = var.sbtopic[6]
   max_delivery_count = 10
   depends_on         = [azurerm_servicebus_topic.sbtopics]
 }

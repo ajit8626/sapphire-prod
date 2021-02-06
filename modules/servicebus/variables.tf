@@ -49,3 +49,12 @@ variable "alertsubscription" {
   type        = list(string)
 }
 
+variable "dailyreconciliationssubscription" {
+  description = "SB Topics subscription list"
+  type        = list(string)
+}
+
+variable "notificationssubscription" {
+  description = "SB Topics subscription list"
+  type        = list(string)
+}

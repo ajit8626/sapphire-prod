@@ -8,8 +8,8 @@ output "eh_primarykey" {
   value = "RootManageSharedAccessKey"
 }
 output "eh_listenaccesskey" {
-	value = "ListenAccessKey"
+  value = "ListenAccessKey"
 }
 output "eh_duplexpolicykey" {
-	value = "DuplexPolicy"
+  value = "DuplexPolicy"
 }

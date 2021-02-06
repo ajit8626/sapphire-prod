@@ -120,3 +120,49 @@ resource "azurerm_eventhub_consumer_group" "evth2ns-cg" {
   resource_group_name = var.resource_group_name
   depends_on          = [azurerm_eventhub.evth2ns]
 }
+
+resource "azurerm_eventhub_consumer_group" "notifications-cg" {
+  name           = "auraportalnotificationprocessor"
+  namespace_name = "${var.azenv}-${var.eventhubns[1]}"
+  # notification - (eventhub)
+  eventhub_name       = var.eventhubs2[2]
+  resource_group_name = var.resource_group_name
+  depends_on          = [azurerm_eventhub.evth2ns]
+}
+
+resource "azurerm_eventhub_consumer_group" "real-time-rec-req-cg1" {
+  name           = "real-time-rec-req-missingsales-sa"
+  namespace_name = "${var.azenv}-${var.eventhubns[1]}"
+  # real-time-rec-req - (eventhub)
+  eventhub_name       = var.eventhubs2[3]
+  resource_group_name = var.resource_group_name
+  depends_on          = [azurerm_eventhub.evth2ns]
+}
+
+resource "azurerm_eventhub_consumer_group" "real-time-rec-req-cg2" {
+  name           = "real-time-rec-req-missingstock-sa"
+  namespace_name = "${var.azenv}-${var.eventhubns[1]}"
+  # real-time-rec-req - (eventhub)
+  eventhub_name       = var.eventhubs2[3]
+  resource_group_name = var.resource_group_name
+  depends_on          = [azurerm_eventhub.evth2ns]
+}
+
+resource "azurerm_eventhub_consumer_group" "realtime-stock-rec-snapshots-cg1" {
+  name           = "quietbusyintervalprocessor"
+  namespace_name = "${var.azenv}-${var.eventhubns[1]}"
+  # realtime-stock-rec-snapshots - (eventhub)
+  eventhub_name       = var.eventhubs2[4]
+  resource_group_name = var.resource_group_name
+  depends_on          = [azurerm_eventhub.evth2ns]
+}
+
+resource "azurerm_eventhub_consumer_group" "realtime-stock-rec-snapshots-cg2" {
+  name           = "realtimealertgenerator"
+  namespace_name = "${var.azenv}-${var.eventhubns[1]}"
+  # realtime-stock-rec-snapshots - (eventhub)
+  eventhub_name       = var.eventhubs2[4]
+  resource_group_name = var.resource_group_name
+  depends_on          = [azurerm_eventhub.evth2ns]
+}
+
