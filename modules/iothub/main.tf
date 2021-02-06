@@ -9,7 +9,8 @@ resource "azurerm_iothub" "main" {
   event_hub_partition_count   = 2
   event_hub_retention_in_days = 1
 }
-
+/*
+#By default these rules added because of below deployment templates
 #Shared access policy
 resource "azurerm_iothub_shared_access_policy" "iothubowner" {
   name                = "iothubowner"
@@ -54,7 +55,7 @@ resource "azurerm_iothub_shared_access_policy" "registryReadWrite" {
   registry_write = true
   registry_read  = true
 }
-
+*/
 resource "azurerm_template_deployment" "main" {
   name                = "iothub-deployment"
   resource_group_name = var.resource_group_name
@@ -271,8 +272,13 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
+<<<<<<< HEAD
+resource "azurerm_template_deployment" "third3" {
+  name                = "iothub-deployment-3"
+=======
 resource "azurerm_template_deployment" "third" {
   name                = "iothub-deployment3"
+>>>>>>> f96d2b176e41c2228d086b4cde6a296321f92ae7
   resource_group_name = var.resource_group_name
   parameters = {
     resourceGrp           = var.resource_group_name
@@ -379,9 +385,15 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
+<<<<<<< HEAD
+/*
+resource "azurerm_template_deployment" "fourth4" {
+  name                = "iothub-deployment-4"
+=======
 
 resource "azurerm_template_deployment" "fourth" {
   name                = "iothub-deployment4"
+>>>>>>> f96d2b176e41c2228d086b4cde6a296321f92ae7
   resource_group_name = var.resource_group_name
   parameters = {
     resourceGrp           = var.resource_group_name
@@ -487,3 +499,5 @@ resource "azurerm_template_deployment" "fourth" {
 DEPLOY
   deployment_mode = "Incremental"
 }
+
+*/
