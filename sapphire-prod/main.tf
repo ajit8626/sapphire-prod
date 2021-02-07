@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "main" {
     environment = var.azenv
   }
 }
-/*
+
 module "signalr" {
   source              = "./modules/signalr"
   resource_group_name = azurerm_resource_group.main.name
@@ -190,7 +190,7 @@ module "vm-sirml" {
   azure_tenant_id = var.azure_tenant_id
   azure_client_secret = var.azure_client_secret
 }
-*/
+
 
 module "cosmosdb" {
   source = "./modules/cosmosdb"
