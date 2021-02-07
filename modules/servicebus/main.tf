@@ -62,7 +62,7 @@ resource "azurerm_servicebus_queue" "aura-timeout" {
   namespace_name        = azurerm_servicebus_namespace.main.name
   max_delivery_count    = 1000
   lock_duration         = "PT30S"
-  max_size_in_megabytes = "81920"
+  max_size_in_megabytes = "5120"
   default_message_ttl   = "P14D"
   enable_partitioning   = true
   depends_on            = [azurerm_servicebus_namespace.main]
@@ -75,7 +75,7 @@ resource "azurerm_servicebus_queue" "TTL_3_days" {
   namespace_name        = azurerm_servicebus_namespace.main.name
   max_delivery_count    = 10
   lock_duration         = "PT30S"
-  max_size_in_megabytes = "81920"
+  max_size_in_megabytes = "5120"
   default_message_ttl   = "P3D"
   enable_partitioning   = true
   depends_on            = [azurerm_servicebus_namespace.main]
@@ -89,7 +89,7 @@ resource "azurerm_servicebus_topic" "sbtopics" {
   enable_partitioning   = true
   status                = "Active"
   default_message_ttl   = "P3D"
-  max_size_in_megabytes = "81920"
+  max_size_in_megabytes = "5120"
   depends_on            = [azurerm_servicebus_namespace.main]
 }
 
@@ -171,5 +171,4 @@ resource "azurerm_servicebus_subscription" "tankinventories-subsc" {
   max_delivery_count = 10
   depends_on         = [azurerm_servicebus_topic.sbtopics]
 }
-
 
