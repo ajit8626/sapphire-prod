@@ -2,10 +2,9 @@ resource "azurerm_stream_analytics_job" "main" {
   name                = "LateDataProcessor"
   resource_group_name = var.resource_group_name
   location            = var.location
-  compatibility_level = "1.1"
 
   # Actual compatibility_level set on portal - "1.2"
-  #  compatibility_level                      = "1.2"
+  compatibility_level                      = "1.2"
   events_late_arrival_max_delay_in_seconds = 5
   events_out_of_order_max_delay_in_seconds = 0
   events_out_of_order_policy               = "Adjust"
