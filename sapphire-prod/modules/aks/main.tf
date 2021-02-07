@@ -26,7 +26,7 @@ resource "azurerm_subnet" "virtualnodesubnet" {
 }
 
 resource "azurerm_kubernetes_cluster" "main" {
-  name                = "new-${var.azenv}-sap-k8s-cluster"
+  name                = "${var.azenv}-sap-k8s-cluster"
   location            = var.location
   resource_group_name = var.resource_group_name
   dns_prefix          = var.azenv
