@@ -175,37 +175,37 @@ module "aks" {
   nodepoolvm_size     = var.nodepoolvm_size
 }
 
-module "vm-sirml" {
-  source = "./modules/vm-sirml" 
-  resource_group_name = azurerm_resource_group.main.name
-  location = azurerm_resource_group.main.location
-  azenv = var.azenv
-  nsg-port-list = var.nsg-port-list
-  nsg-priority-list = var.nsg-priority-list
-  nsg-description-list = var.nsg-description-list
+module "vmsirml" {
+  source                          = "./modules/vmsirml"
+  resource_group_name             = azurerm_resource_group.main.name
+  location                        = azurerm_resource_group.main.location
+  azenv                           = var.azenv
+  nsg-port-list                   = var.nsg-port-list
+  nsg-priority-list               = var.nsg-priority-list
+  nsg-description-list            = var.nsg-description-list
   nsg-destination-port-range-list = var.nsg-destination-port-range-list
-  admin_username = var.admin_username
-  azure_subscription_id = var.azure_subscription_id
-  azure_client_id = var.azure_client_id
-  azure_tenant_id = var.azure_tenant_id
-  azure_client_secret = var.azure_client_secret
+  admin_username                  = var.admin_username
+  azure_subscription_id           = var.azure_subscription_id
+  azure_client_id                 = var.azure_client_id
+  azure_tenant_id                 = var.azure_tenant_id
+  azure_client_secret             = var.azure_client_secret
 }
 
 
 module "cosmosdb" {
-  source = "./modules/cosmosdb"
-  resource_group_name = azurerm_resource_group.main.name
-  location = azurerm_resource_group.main.location
-  azenv = var.azenv
-  cosmosdboffertype = var.cosmosdboffertype
-  cosmosdbkind = var.cosmosdbkind
-  cosmosdbconsistency_level = var.cosmosdbconsistency_level
-  cosdb = var.cosdb
-  sapphiredb_dedicated = var.sapphiredb_dedicated
-sapphiredb_shared = var.sapphiredb_shared
-  sapphiredb_pkey_id = var.sapphiredb_pkey_id
-  sapphiredb_pkey_name = var.sapphiredb_pkey_name
-  siteexporter = var.siteexporter
-  sapphire2_pkey_siteid_dedicated = var.sapphire2_pkey_siteid_dedicated 
-  sapphire2_pkey_id_dedicated = var.sapphire2_pkey_id_dedicated
+  source                          = "./modules/cosmosdb"
+  resource_group_name             = azurerm_resource_group.main.name
+  location                        = azurerm_resource_group.main.location
+  azenv                           = var.azenv
+  cosmosdboffertype               = var.cosmosdboffertype
+  cosmosdbkind                    = var.cosmosdbkind
+  cosmosdbconsistency_level       = var.cosmosdbconsistency_level
+  cosdb                           = var.cosdb
+  sapphiredb_dedicated            = var.sapphiredb_dedicated
+  sapphiredb_shared               = var.sapphiredb_shared
+  sapphiredb_pkey_id              = var.sapphiredb_pkey_id
+  sapphiredb_pkey_name            = var.sapphiredb_pkey_name
+  siteexporter                    = var.siteexporter
+  sapphire2_pkey_siteid_dedicated = var.sapphire2_pkey_siteid_dedicated
+  sapphire2_pkey_id_dedicated     = var.sapphire2_pkey_id_dedicated
 }

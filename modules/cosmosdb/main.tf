@@ -308,4 +308,4 @@ resource "azurerm_cosmosdb_sql_container" "Sapphire2_pkey_workflowId_dedicated" 
 
   depends_on = [azurerm_cosmosdb_sql_database.dbs]
 }
-*/
+

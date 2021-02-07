@@ -272,13 +272,9 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
-<<<<<<< HEAD
+
 resource "azurerm_template_deployment" "third3" {
-  name                = "iothub-deployment-3"
-=======
-resource "azurerm_template_deployment" "third" {
   name                = "iothub-deployment3"
->>>>>>> f96d2b176e41c2228d086b4cde6a296321f92ae7
   resource_group_name = var.resource_group_name
   parameters = {
     resourceGrp           = var.resource_group_name
@@ -385,15 +381,8 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
-<<<<<<< HEAD
-/*
 resource "azurerm_template_deployment" "fourth4" {
-  name                = "iothub-deployment-4"
-=======
-
-resource "azurerm_template_deployment" "fourth" {
   name                = "iothub-deployment4"
->>>>>>> f96d2b176e41c2228d086b4cde6a296321f92ae7
   resource_group_name = var.resource_group_name
   parameters = {
     resourceGrp           = var.resource_group_name
@@ -500,4 +489,4 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
-*/
+
